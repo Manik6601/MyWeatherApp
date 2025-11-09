@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌅 Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
+.animate-bounce-slow {
+  animation: bounce 6s infinite ease-in-out;
+}
+
+/* ☁️ Clouds */
+.cloud {
+  position: absolute;
+  background: white;
+  opacity: 0.6;
+  border-radius: 50%;
+  animation: moveClouds 60s linear infinite;
+}
+.cloud.one { top: 20%; left: -10%; width: 120px; height: 60px; }
+.cloud.two { top: 40%; left: -20%; width: 200px; height: 100px; animation-delay: 10s; }
+.cloud.three { top: 60%; left: -30%; width: 150px; height: 80px; animation-delay: 20s; }
+
+@keyframes moveClouds {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(120vw); }
+}
+
+/* 🌧 Rain */
+.raindrop {
+  position: absolute;
+  width: 2px;
+  height: 15px;
+  background: white;
+  top: -20px;
+  left: calc(100% * var(--i));
+  animation: rain 1s linear infinite;
+  opacity: 0.7;
+}
+@keyframes rain {
+  0% { transform: translateY(0); opacity: 0.8; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* ❄️ Snow */
+.snowflake {
+  position: absolute;
+  top: -10px;
+  left: calc(100% * var(--i));
+  font-size: 1.2rem;
+  animation: snowfall 5s linear infinite;
+  opacity: 0.8;
+}
+@keyframes snowfall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+/* ✨ Stars */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s ease-in-out infinite alternate;
+  top: calc(100% * var(--i));
+  left: calc(100% * var(--j));
+}
+@keyframes twinkle {
+  from { opacity: 0.2; }
+  to { opacity: 1; }
+}
+
+:root{
+  --bg: #f6f8fb;
+  --card-bg: #ffffff;
+  --accent: #2374e1;
+  --muted: #6b7280;
+  --danger: #d9534f;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,"Helvetica Neue",Arial;}
+body{background:var(--bg);color:#111}
+
+.app-root{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:20px 12px;}
+.app-header{margin-bottom:8px;}
+.app-main{width:100%;max-width:760px;padding:12px;}
+.app-footer{margin-top:32px;color:var(--muted)}
+
+.controls{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
+.city-input{padding:10px 12px;border-radius:8px;border:1px solid #ddd;width:220px;outline:none}
+.city-input:focus{box-shadow:0 0 0 3px rgba(35,116,225,0.12);border-color:var(--accent)}
+
+.btn{background:var(--accent);color:#fff;border:none;padding:10px 12px;border-radius:8px;cursor:pointer}
+.btn.secondary{background:#e6eefc;color:var(--accent);border:1px solid rgba(35,116,225,0.18)}
+.btn:hover{opacity:0.95}
+
+.error-box{background:#fff3f3;border:1px solid rgba(217,83,79,0.15);color:var(--danger);padding:10px;border-radius:8px;margin-top:12px;max-width:560px;margin-left:auto;margin-right:auto}
+
+/* Weather card */
+.weather-card{
+  background:var(--card-bg);
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(18,38,63,0.06);
+  padding:18px;
+  margin:20px auto;
+  max-width:520px;
+  width:100%;
+}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.city-name{margin:0;font-size:1.4rem}
+.desc{margin:2px 0;color:var(--muted);text-transform:capitalize}
+.weather-icon{width:72px;height:72px}
+
+.temp-row{display:flex;align-items:center;gap:12px;margin-top:8px}
+.temp-big{font-size:2.4rem;font-weight:600}
+.temp-small{color:var(--muted)}
+
+.details-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px;color:var(--muted);font-size:0.95rem}
+
+/* Spinner styles */
+.spinner-wrapper{display:flex;align-items:center;justify-content:center}
+.spinner{
+  width:56px;height:56px;border-radius:50%;
+  border:6px solid rgba(0,0,0,0.08);
+  border-top-color:var(--accent);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* optional: small scrollbar styling (modern browsers) */
+::-webkit-scrollbar {
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.18);
+  border-radius: 10px;
+}

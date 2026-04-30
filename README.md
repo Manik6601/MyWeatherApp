@@ -52,10 +52,7 @@ This project focuses on delivering a smooth user experience with:
 * Real-time weather-based animations
 * Clean and modern interface
 
-## 📷 Preview
-
-(Add screenshots here)
 
 ## 👨‍💻 Author
 
-Your Name
+Manik Arora
